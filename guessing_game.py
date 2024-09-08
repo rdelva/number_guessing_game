@@ -39,8 +39,8 @@ def start_game():
        
         #Only prints out the highest score if the array is filled and selects the highest score
         if len(score):
-            print("Highest score for the Guessing Game is: {}".format( max(score)))
-
+            print("Highest score for the Guessing Game is: {}".format( min(score)))
+        print("RANDOM NUMBER: ", number)
         guess = int(input("Please guess a number between 1 to 10. "))
         if guess < max_number + 1:
             if guess < number:
