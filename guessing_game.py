@@ -8,8 +8,7 @@ Project 1 - The Number Guessing Game
 import random
 
 # Create the start_game function.
-# Write your code inside this function.
-
+def start_game():
 #   When the program starts, we want to:
 #   ------------------------------------
 #   1. Display an intro/welcome message to the player.
@@ -23,6 +22,47 @@ import random
 #   5. Let the player know the game is ending, or something that indicates the game is over.
 
 # ( You can add more features/enhancements if you'd like to. )
+    #Display intro/welcome message
+    name = input("What is your name? ")
+    print("Hello {},  and welcome to The Number Guessing Game. I'm your host Rose!! \n Today you will guess a number between 1 to 10."
+          .format(name))
+    answer = input("Are you ready to play? " )
+    number = random.randint(1,10)
+   
+    print("RANDOM NUMBER: ", number)
+    counter = 0
+    score = []
+
+
+    while answer.lower() == 'yes': 
+        max_number = 10      
+       
+        #Only prints out the highest score if the array is filled and selects the highest score
+        if len(score):
+            print("Highest score for the Guessing Game is: ".format( max(score)))
+
+        guess = int(input("Please guess a number between 1 to 10. "))
+        if guess < number AND guess:
+            print("Guess again!. It's higher.")
+            counter += 1 
+        elif guess > number:
+            print("Guess again!. It's lower")
+            counter += 1
+        elif guess > max_number:
+            print("THATS WAAAAY TO HIGH!!!! Try again.")
+            counter += 1
+        else:
+            print("That's correct. The number is {}. It took you {} tries".format(number, counter))
+            score.append(counter)
+            answer = input("Do you want to play again? ")
+           
+            
+            
+
+       
+        
 
 
 # Kick off the program by calling the start_game function.
+
+start_game()
