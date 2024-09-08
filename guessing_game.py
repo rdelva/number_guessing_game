@@ -48,10 +48,7 @@ def start_game():
                 counter += 1 
             elif guess > number:
                 print("Guess again!. It's lower")
-                counter += 1
-            elif guess > max_number:
-                print("THATS WAAAAY TO HIGH!!!! Try again.")
-                counter += 1
+                counter += 1         
             else:
                 print("That's correct. The number is {}. It took you {} tries".format(number, counter))
                 score.append(counter)
