@@ -23,24 +23,30 @@ def start_game():
 
 # ( You can add more features/enhancements if you'd like to. )
     #Display intro/welcome message
-    name = input("What is your name? ")
-    print("Hello {},  and welcome to The Number Guessing Game. I'm your host Rose!! \n Today you will guess a number between 1 to 10."
-          .format(name))
-    answer = input("Are you ready to play? " )
-    number = random.randint(1,10)
-   
-    print("RANDOM NUMBER: ", number)
-    counter = 0
-    score = []
+
+    def generate_number():
+        #generates a random number
+        return random.randint(1,10)
+
+
 
 
     while answer.lower() == 'yes': 
+        name = input("What is your name? ")
+        print("Hello {},  and welcome to The Number Guessing Game. I'm your host Rose!! \n Today you will guess a number between 1 to 10."
+          .format(name))
+        answer = input("Are you ready to play? (yes/no) " )
+    
+   
+        print("RANDOM NUMBER: ", generate_number)
+        counter = 0
+        score = []
         max_number = 10      
        
         #Only prints out the highest score if the array is filled and selects the highest score
         if len(score):
             print("Highest score for the Guessing Game is: {}".format( min(score)))
-        print("RANDOM NUMBER: ", number)
+        print("RANDOM NUMBER: ", generate_number)
         guess = int(input("Please guess a number between 1 to 10. "))
         if guess < max_number + 1:
             if guess < number:
@@ -55,6 +61,9 @@ def start_game():
                 answer = input("Do you want to play again? ")
         else:
             print("You are out of bounds. Try again!!!")
+
+    
+    print("Thank you for playing! Good Bye :) ");
            
             
             
