@@ -7,6 +7,12 @@ Project 1 - The Number Guessing Game
 # Import the random module.
 import random
 
+def generate_number():
+        #generates a random number
+        return random.randint(1,10)
+
+
+
 # Create the start_game function.
 def start_game():
 #   When the program starts, we want to:
@@ -23,55 +29,55 @@ def start_game():
 
 # ( You can add more features/enhancements if you'd like to. )
     #Display intro/welcome message
-
-    def generate_number():
-        #generates a random number
-        return random.randint(1,10)
-
-
-
+   
+    name = input("What is your name? ")
+    print("Hello {},  and welcome to The Number Guessing Game. I'm your host Rose!! \n Today you will guess a number between 1 to 10."
+          .format(name))
+    answer = input("Are you ready to play? (yes/no) " )
 
     while answer.lower() == 'yes': 
-        name = input("What is your name? ")
-        print("Hello {},  and welcome to The Number Guessing Game. I'm your host Rose!! \n Today you will guess a number between 1 to 10."
-          .format(name))
-        answer = input("Are you ready to play? (yes/no) " )
-    
-   
-        print("RANDOM NUMBER: ", generate_number)
+
         counter = 0
         score = []
-        max_number = 10      
+        max_number = 10
+        min_number = 1   
+        random_number = generate_number()
+        print("RANDOM NUMBER: ", random_number)
+   
        
         #Only prints out the highest score if the array is filled and selects the highest score
         if len(score):
             print("Highest score for the Guessing Game is: {}".format( min(score)))
-        print("RANDOM NUMBER: ", generate_number)
-        guess = int(input("Please guess a number between 1 to 10. "))
-        if guess < max_number + 1:
-            if guess < number:
-                print("Guess again!. It's higher.")
-                counter += 1 
-            elif guess > number:
-                print("Guess again!. It's lower")
-                counter += 1         
+        print("RANDOM NUMBER: ", random_number)
+        guess = input("Please guess a number between 1 to 10. ")
+
+        try:
+            guess = int(guess)
+            #Raise a ValueError if the guess is higher than the max_number
+            if guess > max_number:
+                raise ValueError("Please enter a value that is less than 10")
+            if guess < min_number: 
+                raise ValueError("Please enter a value that is more than 1")
+        except ValueError as err:
+            print("Please enter a numerical value.".format(err))
+        else: 
+            if guess < random_number:
+                print("Guess again. The number is higher")
+                print("RANDOM NUMBER 1: ", random_number)
+                counter += 1
+            elif guess > random_number:
+                print("Guess again. The number is lower")
+                print("RANDOM NUMBER 2: ", random_number)        
+                counter += 1
             else:
-                print("That's correct. The number is {}. It took you {} tries".format(number, counter))
+                print("That's correct. The number is {}. It tooks you {} tries. ".format(random_number, counter))
+                print("RANDOM NUMBER 3: ", random_number)
                 score.append(counter)
-                answer = input("Do you want to play again? ")
-        else:
-            print("You are out of bounds. Try again!!!")
-
+                answer = input("Do you want to play again?")
     
-    print("Thank you for playing! Good Bye :) ");
+    print("Thank you for playing! Good Bye :) ")
            
-            
-            
-
-       
-        
-
+  
 
 # Kick off the program by calling the start_game function.
-
 start_game()
