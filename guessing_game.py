@@ -44,16 +44,19 @@ def start_game():
         random_number = generate_number()
         print( random_number)
    
-        while guess != random_number: 
-            #Only prints out the highest score if the array is filled and selects the highest score
-            if len(score):
-                print("Highest score for the Guessing Game is: {}".format( min(score)))
-            print("RANDOM NUMBER: ", random_number)
         
-            guess = input("Please guess a number between 1 to 10. ")
+        #Only prints out the highest score if the array is filled and selects the highest score
+        if len(score):
+            print("Highest score for the Guessing Game is: {}".format( min(score)))
+            print("RANDOM NUMBER: ", random_number)
+       
+        guess = input("Please guess a number between 1 to 10. ")
+        guess = int(guess)
 
+        while True: 
+            
             try:
-                guess = int(guess)
+              
                 #Raise a ValueError if the guess is higher than the max_number
                 if guess > max_number:
                     raise ValueError("Please enter a value that is less than 10")
@@ -63,23 +66,24 @@ def start_game():
                 print("Please enter a numerical value.".format(err))
             else: 
                 #keep guessing until guess == random_number
-             
-                    if guess < random_number:
-                        print("Guess again. The number is higher")
-                        print( random_number)
-                        counter += 1
-                        continue
-                    elif guess > random_number:
-                        print("Guess again. The number is lower")
-                        print( random_number)        
-                        counter += 1
-                        continue
-                    else:
-                        print("That's correct. The number is {}. It tooks you {} tries. ".format(random_number, counter))
-                        print("RANDOM NUMBER 3: ", random_number)
-                        score.append(counter)
-                        answer = input("Do you want to play again?")
-                        continue
+                
+                        if guess < random_number:
+                            guess = int(input("Guess again. The number is higher. Please guess a number between 1 to 10. "))
+                            print( random_number)
+                            counter += 1
+                            return True
+                            
+                        elif guess > random_number:
+                            guess = int(input("Guess again. The number is lower. Please guess a number between 1 to 10. "))
+                            print( random_number)        
+                            counter += 1
+                            return True
+                        else:
+                            print("That's correct. The number is {}. It tooks you {} tries. ".format(random_number, counter))
+                            print("RANDOM NUMBER 3: ", random_number)
+                            score.append(counter)
+                            answer = input("Do you want to play again?")
+                            return False
 
     
     print("Thank you for playing! Good Bye :) ")
