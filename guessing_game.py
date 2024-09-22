@@ -47,32 +47,31 @@ def start_game():
         
         #Only prints out the highest score if the array is filled and selects the highest score
         if len(score):
-            print("Highest score for the Guessing Game is: {}".format( min(score)))
-         
-       
-        guess = input("Please guess a number between 1 to 10. ")
-        guess = int(guess)
+            print("Highest score for the Guessing Game is: {}".format( min(score)))             
+
 
         while game_over == False: #continue to run the game until the user guesses the random number
             
             try:
+                guess = input("Please guess a number between 1 to 10. ")           
+                guess = int(guess)
               
                 #Raise a ValueError if the guess is higher than the max_number
                 if guess > max_number:
                     raise ValueError("Please enter a value that is less than 10")
-                if guess < min_number: 
+                elif guess < min_number: 
                     raise ValueError("Please enter a value that is more than 1")
             except ValueError as err:
-                print("Please enter a numerical value.{}".format(err))
+                print("Please enter a numerical value. {}".format(err))             
             else: 
                 #keep guessing until guess == random_number
                 
                         if guess < random_number:
-                            guess = int(input("Guess again. The number is higher. Please guess a number between 1 to 10. "))                           
+                            print("Guess again. The number is higher")
                             counter += 1
                             game_over = False                      
                         elif guess > random_number:
-                            guess = int(input("Guess again. The number is lower. Please guess a number between 1 to 10. "))                                 
+                            print("Guess again. The number is lower")
                             counter += 1
                             game_over = False
                         else:
