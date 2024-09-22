@@ -35,27 +35,25 @@ def start_game():
           .format(name))
     answer = input("Are you ready to play? (yes/no) " )
     
-    score = []
+    score = [] #create a scorebox to keep a record of all the scores
 
     while answer.lower() == 'yes': 
 
-        counter = 0
-       
+        counter = 0       
         max_number = 10
         min_number = 1   
-        random_number = generate_number()
-        print( random_number)
-        game_over = False
+        random_number = generate_number()  # generates a random number and assigns it to random_number      
+        game_over = False  # A flag that allows the guessing loop to continue 
         
         #Only prints out the highest score if the array is filled and selects the highest score
         if len(score):
             print("Highest score for the Guessing Game is: {}".format( min(score)))
-            print("RANDOM NUMBER: ", random_number)
+         
        
         guess = input("Please guess a number between 1 to 10. ")
         guess = int(guess)
 
-        while game_over == False: 
+        while game_over == False: #continue to run the game until the user guesses the random number
             
             try:
               
@@ -65,26 +63,20 @@ def start_game():
                 if guess < min_number: 
                     raise ValueError("Please enter a value that is more than 1")
             except ValueError as err:
-                print("Please enter a numerical value.".format(err))
+                print("Please enter a numerical value.{}".format(err))
             else: 
                 #keep guessing until guess == random_number
                 
                         if guess < random_number:
-                            guess = int(input("Guess again. The number is higher. Please guess a number between 1 to 10. "))
-                            print( random_number)
+                            guess = int(input("Guess again. The number is higher. Please guess a number between 1 to 10. "))                           
                             counter += 1
-                            game_over = False 
-                            
-                            
+                            game_over = False                      
                         elif guess > random_number:
-                            guess = int(input("Guess again. The number is lower. Please guess a number between 1 to 10. "))
-                            print( random_number)        
+                            guess = int(input("Guess again. The number is lower. Please guess a number between 1 to 10. "))                                 
                             counter += 1
                             game_over = False
-
                         else:
-                            print("That's correct. The number is {}. It tooks you {} tries. ".format(random_number, counter))
-                            print("RANDOM NUMBER 3: ", random_number)
+                            print("That's correct. The number is {}. It tooks you {} tries. ".format(random_number, counter))                       
                             score.append(counter)
                             answer = input("Do you want to play again? ")
                             game_over = True
