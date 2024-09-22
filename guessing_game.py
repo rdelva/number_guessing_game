@@ -34,16 +34,18 @@ def start_game():
     print("Hello {},  and welcome to The Number Guessing Game. I'm your host Rose!! \n Today you will guess a number between 1 to 10."
           .format(name))
     answer = input("Are you ready to play? (yes/no) " )
+    
+    score = []
 
     while answer.lower() == 'yes': 
 
         counter = 0
-        score = []
+       
         max_number = 10
         min_number = 1   
         random_number = generate_number()
         print( random_number)
-        game_over = ""
+        game_over = False
         
         #Only prints out the highest score if the array is filled and selects the highest score
         if len(score):
@@ -79,16 +81,17 @@ def start_game():
                             print( random_number)        
                             counter += 1
                             game_over = False
-                            
+
                         else:
                             print("That's correct. The number is {}. It tooks you {} tries. ".format(random_number, counter))
                             print("RANDOM NUMBER 3: ", random_number)
                             score.append(counter)
-                            answer = input("Do you want to play again?")
+                            answer = input("Do you want to play again? ")
+                            game_over = True
                             
 
     
-    print("Thank you for playing! Good Bye :) ")
+    print("Thank you for playing,{}! Good Bye :) ".format(name))
            
   
 
