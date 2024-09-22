@@ -62,7 +62,7 @@ def start_game():
                 elif guess < min_number: 
                     raise ValueError("Please enter a value that is more than 1")
             except ValueError as err:
-                print("Please enter a numerical value. {}".format(err))             
+                print("Please enter a whole number. {}".format(err))             
             else: 
                 #keep guessing until guess == random_number
                 
