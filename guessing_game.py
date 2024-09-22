@@ -82,7 +82,7 @@ def start_game():
                             
 
     
-    print("Thank you for playing,{}! Good Bye :) ".format(name))
+    print("Thank you for playing, {}! Good Bye :) ".format(name))
            
   
 
