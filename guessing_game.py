@@ -12,20 +12,6 @@ def generate_number():
         return random.randint(1,10)
 
 
-# def score(current_score =""):
-#      #Keeps track of the current score (lowest score) 
-          
-#     #  if highest_score == "":
-#     #       return "No Score"  
-#     #  elif current_score < highest_score:
-#     #       highest_score = current_score # make the current score the highest_score 
-#     #       return highest_score
-#     #  elif current_score > highest_score:
-#     #       return highest_score   # send back the original highest score   
-#     #  elif current_score == highest_score:
-#     #         return highest_score
-
-
 
 # Create the start_game function.
 def start_game():
